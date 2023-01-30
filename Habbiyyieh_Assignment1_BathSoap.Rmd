@@ -1,0 +1,75 @@
+---
+title: "BathSoap"
+author: "Fatima Habbiyyieh"
+date: "2023-01-30"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+source: "https://kent.instructure.com/courses/49028/pages/csv-files?module_ item_id=2596971"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(readr)
+BathSoap <- read_csv("BathSoap.csv")
+View(BathSoap)
+```
+
+##Question 3 printing the descriptive 
+##statistics of average price, column 19  (quantitative example)
+```{r}
+#created a vector for Avg._Price values
+averagePriceVector <- BathSoap[ ,19]
+#print statistical descriptions
+nrow(BathSoap)
+sd(BathSoap$Avg._Price)
+IQR(BathSoap$Avg._Price)
+median(BathSoap$Avg._Price)
+mean(BathSoap$Avg._Price)
+var(BathSoap$Avg._Price)
+sd(BathSoap$Avg._Price)/sqrt(BathSoap$Avg._Price) #this is the standard error
+mad(BathSoap$Avg._Price)
+min(BathSoap$Avg._Price)
+max(BathSoap$Avg._Price)
+range(BathSoap$Avg._Price)
+quantile(BathSoap$Avg._Price)
+
+#categorical variables
+table(BathSoap$SEX)
+table(BathSoap$AGE)
+table(BathSoap$EDU)
+```
+
+#Question 4 Transforming total volume by calculating square root
+```{r}
+#square root of total volume
+sqrt(BathSoap$Total_Volume)
+
+class(BathSoap$SEX)
+
+class(BathSoap$Member_id)
+as.character(BathSoap$Member_id)
+```
+
+#Question 5 Plot number of transcations and the value,
+#plot number of brands and value
+```{r}
+#plotting the number of transactions, column 15
+plot(BathSoap$No._of_Brands,BathSoap$Value)
+#not sure which made more sense, so I added both
+plot(BathSoap$No._of__Trans,BathSoap$Value)
+```
+```{r}
+
+
+```
